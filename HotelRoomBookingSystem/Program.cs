@@ -54,7 +54,7 @@ class Program
         var avgPrice = rooms.Average(r => r.PricePerNight);
         Console.WriteLine($"AVERAGE PRICE: {avgPrice}");
 
-        // 7. Most expensive rooms
+        // 7. Most expensive room
         var maxRoom = rooms.OrderByDescending(r => r.PricePerNight).First();
         Console.WriteLine($"\nMOST EXPENSIVE ROOM: Room {maxRoom.RoomNumber} - {maxRoom.Type}");
 
@@ -91,10 +91,7 @@ class Program
         var cheapest = rooms.OrderBy(r => r.PricePerNight).First();
         Console.WriteLine($"\nCHEAPEST ROOM: {cheapest.RoomNumber} - {cheapest.PricePerNight}");
 
-        // 13. Price > 1000
-        var expensive = rooms.Where(r => r.PricePerNight > 1000).ToList();
-        Console.WriteLine("\nROOMS PRICE > 1000:");
-        PrintTable(expensive);
+     
     }
 
     // Table Display Method
