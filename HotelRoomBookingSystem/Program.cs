@@ -100,9 +100,9 @@ class Program
     // Table Display Method
     static void PrintTable(List<Room> rooms)
     {
-        Console.WriteLine("==============================================================");
-        Console.WriteLine("| No  | Type     | Price      | Booked | Floor |");
-        Console.WriteLine("==============================================================");
+        Console.WriteLine("=======================================================");
+        Console.WriteLine("| No  | Type     | Price      | Booked   | Floor |");
+        Console.WriteLine("=======================================================");
 
         foreach (var r in rooms)
         {
