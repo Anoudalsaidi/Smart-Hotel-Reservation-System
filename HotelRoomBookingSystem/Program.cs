@@ -91,7 +91,11 @@ class Program
         var cheapest = rooms.OrderBy(r => r.PricePerNight).First();
         Console.WriteLine($"\nCHEAPEST ROOM: {cheapest.RoomNumber} - {cheapest.PricePerNight}");
 
-     
+        // 13. Price > 1000
+        var expensive = rooms.Where(r => r.PricePerNight > 1000).ToList();
+        Console.WriteLine("\nROOMS PRICE > 1000:");
+        PrintTable(expensive);
+
     }
 
     // Table Display Method
