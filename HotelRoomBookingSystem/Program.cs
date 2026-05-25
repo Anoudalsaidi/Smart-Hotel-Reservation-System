@@ -24,7 +24,7 @@ class Program
             new Room { Id = 8, RoomNumber = "402", Type = "Double", PricePerNight = 950, IsBooked = false, Floor = 4 }
         };
 
-        // 1. Available Rooms
+        // 1. Available Room
         var availableRooms = rooms.Where(r => !r.IsBooked).ToList();
         Console.WriteLine("AVAILABLE ROOMS:");
         PrintTable(availableRooms);
