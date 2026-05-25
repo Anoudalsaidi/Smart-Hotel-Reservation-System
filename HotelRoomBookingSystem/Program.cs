@@ -54,7 +54,7 @@ class Program
         var avgPrice = rooms.Average(r => r.PricePerNight);
         Console.WriteLine($"AVERAGE PRICE: {avgPrice}");
 
-        // 7. Most expensive room
+        // 7. Most expensive rooms
         var maxRoom = rooms.OrderByDescending(r => r.PricePerNight).First();
         Console.WriteLine($"\nMOST EXPENSIVE ROOM: Room {maxRoom.RoomNumber} - {maxRoom.Type}");
 
