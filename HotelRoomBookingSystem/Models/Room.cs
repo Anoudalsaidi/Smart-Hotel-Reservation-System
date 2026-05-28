@@ -1,23 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace HotelRoomBookingSystem.Models
+﻿namespace HotelRoomBookingSystem.Models
 {
-    
-        public class Room
-        {
-            public int Id { get; set; }
-
-            public string RoomNumber { get; set; }
-
-            public string Type { get; set; }
-
-            public double PricePerNight { get; set; }
-
-            public bool IsBooked { get; set; }
-
-            public int Floor { get; set; }
-        }
+    public class Room
+    {
+        public int Id { get; set; }
+        public string RoomNumber { get; set; } = string.Empty;
+        public string Type { get; set; } = string.Empty;
+        public decimal PricePerNight { get; set; }
+        public bool IsBooked { get; set; }
+        public int Floor { get; set; }
     }
-
+}

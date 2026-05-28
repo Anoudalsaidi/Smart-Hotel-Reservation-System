@@ -1,116 +1,156 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using HotelRoomBookingSystem.Data;
+using HotelRoomBookingSystem.Services;
 using HotelRoomBookingSystem.Models;
 
 class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
-        Console.ForegroundColor = ConsoleColor.Cyan;
-        Console.WriteLine("========== HOTEL ROOM BOOKING SYSTEM ==========\n");
-        Console.ResetColor();
+        var rooms = RoomSeed.GetRooms();
+        var service = new RoomService(rooms);
 
-        // Sample Data
-        List<Room> rooms = new List<Room>
+        while (true)
         {
-            new Room { Id = 1, RoomNumber = "101", Type = "Single", PricePerNight = 500, IsBooked = false, Floor = 1 },
-            new Room { Id = 2, RoomNumber = "102", Type = "Double", PricePerNight = 800, IsBooked = true, Floor = 1 },
-            new Room { Id = 3, RoomNumber = "201", Type = "Suite", PricePerNight = 1500, IsBooked = false, Floor = 2 },
-            new Room { Id = 4, RoomNumber = "202", Type = "Single", PricePerNight = 550, IsBooked = true, Floor = 2 },
-            new Room { Id = 5, RoomNumber = "301", Type = "Double", PricePerNight = 900, IsBooked = false, Floor = 3 },
-            new Room { Id = 6, RoomNumber = "302", Type = "Suite", PricePerNight = 1700, IsBooked = true, Floor = 3 },
-            new Room { Id = 7, RoomNumber = "401", Type = "Single", PricePerNight = 600, IsBooked = false, Floor = 4 },
-            new Room { Id = 8, RoomNumber = "402", Type = "Double", PricePerNight = 950, IsBooked = false, Floor = 4 }
-        };
+            ShowMenu();
 
-        // 1. Available Room
-        var availableRooms = rooms.Where(r => !r.IsBooked).ToList();
-        Console.WriteLine("AVAILABLE ROOMS:");
-        PrintTable(availableRooms);
+            Console.Write("\nEnter choice: ");
+            string choice = Console.ReadLine();
 
-        // 2. Room Numbers only
-        Console.WriteLine("\nROOM NUMBERS:");
-        var roomNumbers = rooms.Select(r => r.RoomNumber);
-        foreach (var num in roomNumbers)
-            Console.WriteLine(num);
+            switch (choice)
+            {
+                case "1":
+                    ShowRooms(service.GetAvailableRooms());
+                    break;
 
-        // 3. First available Suite
-        var firstSuite = rooms.FirstOrDefault(r => r.Type == "Suite" && !r.IsBooked);
-        Console.WriteLine("\nFIRST AVAILABLE SUITE:");
-        if (firstSuite != null)
-            Console.WriteLine($"Room {firstSuite.RoomNumber} - {firstSuite.Type}");
+                case "2":
+                    ShowRooms(service.GetAllRooms());
+                    break;
 
-        // 4. Sort by price
-        var sorted = rooms.OrderBy(r => r.PricePerNight).ToList();
-        Console.WriteLine("\nROOMS SORTED BY PRICE:");
-        PrintTable(sorted);
+                case "3":
+                    BookRoomFlow(service);
+                    break;
 
-        // 5. Count booked rooms
-        var bookedCount = rooms.Count(r => r.IsBooked);
-        Console.WriteLine($"\nBOOKED ROOMS COUNT: {bookedCount}");
+                case "4":
+                    var cheap = service.GetCheapestRoom();
+                    Console.WriteLine($"\nCheapest Room: {cheap.RoomNumber} - {cheap.PricePerNight}");
+                    Pause();
+                    break;
 
-        // 6. Average price
-        var avgPrice = rooms.Average(r => r.PricePerNight);
-        Console.WriteLine($"AVERAGE PRICE: {avgPrice}");
+                case "5":
+                    Console.WriteLine($"\nBooked Rooms: {service.GetBookedCount()}");
+                    Pause();
+                    break;
 
-        // 7. Most expensive room
-        var maxRoom = rooms.OrderByDescending(r => r.PricePerNight).First();
-        Console.WriteLine($"\nMOST EXPENSIVE ROOM: Room {maxRoom.RoomNumber} - {maxRoom.Type}");
+                case "6":
+                    Console.Write("\nEnter Type: ");
+                    ShowRooms(service.GetRoomsByType(Console.ReadLine()));
+                    break;
 
-        // 8. Rooms on specific floor
-        var floorRooms = rooms.Where(r => r.Floor == 4).ToList();
-        Console.WriteLine("\nROOMS ON FLOOR 4:");
-        PrintTable(floorRooms);
+                case "7":
+                    Console.WriteLine("Goodbye 👋");
+                    return;
 
-        // 9. Search by type
-        var singleRooms = rooms.Where(r => r.Type == "Single").ToList();
-        Console.WriteLine("\nSINGLE ROOMS:");
-        PrintTable(singleRooms);
+                case "8":
+                    service.ShowStatistics();
+                    break;
 
-        // 10. Group by type
-        Console.WriteLine("\nGROUPED BY TYPE:");
-        var grouped = rooms.GroupBy(r => r.Type);
-
-        foreach (var group in grouped)
-        {
-            Console.WriteLine($"\n{group.Key}:");
-            foreach (var r in group)
-                Console.WriteLine($"Room {r.RoomNumber}");
+                default:
+                    Console.WriteLine("Invalid choice!");
+                    Pause();
+                    break;
+            }
         }
-
-        // 11. Available sorted
-        var availableSorted = rooms.Where(r => !r.IsBooked)
-                                   .OrderBy(r => r.PricePerNight)
-                                   .ToList();
-
-        Console.WriteLine("\nAVAILABLE ROOMS SORTED:");
-        PrintTable(availableSorted);
-
-        // 12. Cheapest room
-        var cheapest = rooms.OrderBy(r => r.PricePerNight).First();
-        Console.WriteLine($"\nCHEAPEST ROOM: {cheapest.RoomNumber} - {cheapest.PricePerNight}");
-
-        // 13. Price > 1000
-        var expensive = rooms.Where(r => r.PricePerNight > 1000).ToList();
-        Console.WriteLine("\nROOMS PRICE > 1000:");
-        PrintTable(expensive);
-
     }
 
-    // Table Display Method
-    static void PrintTable(List<Room> rooms)
+    // ================= MENU =================
+    static void ShowMenu()
     {
-        Console.WriteLine("=======================================================");
-        Console.WriteLine("| No  | Type     | Price      | Booked   | Floor |");
-        Console.WriteLine("=======================================================");
+        Console.Clear();
+
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("====================================");
+        Console.WriteLine("   🏨 HOTEL ROOM SYSTEM");
+        Console.WriteLine("====================================");
+        Console.ResetColor();
+
+        Console.WriteLine("1. Available Rooms");
+        Console.WriteLine("2. All Rooms");
+        Console.WriteLine("3. Book Room");
+        Console.WriteLine("4. Cheapest Room");
+        Console.WriteLine("5. Booked Count");
+        Console.WriteLine("6. Search by Type");
+        Console.WriteLine("7. Exit");
+        Console.WriteLine("8. Dashboard");
+        Console.WriteLine("====================================");
+    }
+
+    // ================= BOOK FLOW =================
+    static void BookRoomFlow(RoomService service)
+    {
+        Console.Clear();
+
+        var available = service.GetAvailableRooms();
+
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("===== AVAILABLE ROOMS =====");
+        Console.ResetColor();
+
+        if (!available.Any())
+        {
+            Console.WriteLine("No available rooms!");
+            Pause();
+            return;
+        }
+
+        for (int i = 0; i < available.Count; i++)
+        {
+            var r = available[i];
+            Console.WriteLine($"{i + 1}. Room {r.RoomNumber} | {r.Type} | {r.PricePerNight} | Floor {r.Floor}");
+        }
+
+        Console.Write("\nSelect room number: ");
+        string input = Console.ReadLine();
+
+        if (!int.TryParse(input, out int index) || index < 1 || index > available.Count)
+        {
+            Console.WriteLine("Invalid selection!");
+            Pause();
+            return;
+        }
+
+        var selected = available[index - 1];
+
+        service.BookRoom(selected.RoomNumber);
+
+        Pause();
+    }
+
+    // ================= TABLE =================
+    static void ShowRooms(List<Room> rooms)
+    {
+        Console.Clear();
+
+        Console.WriteLine("====================================");
+        Console.WriteLine("         ROOMS LIST");
+        Console.WriteLine("====================================");
 
         foreach (var r in rooms)
         {
-            Console.WriteLine(
-                $"| {r.RoomNumber,-3} | {r.Type,-8} | {r.PricePerNight,-10} | {r.IsBooked,-6} | {r.Floor,-5} |");
+            Console.ForegroundColor = r.IsBooked ? ConsoleColor.Red : ConsoleColor.Green;
+
+            Console.WriteLine($"{r.RoomNumber} | {r.Type} | {r.PricePerNight} | {(r.IsBooked ? "BOOKED" : "FREE")}");
+
+            Console.ResetColor();
         }
 
-        Console.WriteLine("==============================================================");
+        Console.WriteLine("====================================");
+
+        Pause();
+    }
+
+    static void Pause()
+    {
+        Console.WriteLine("\nPress any key...");
+        Console.ReadKey();
     }
 }
