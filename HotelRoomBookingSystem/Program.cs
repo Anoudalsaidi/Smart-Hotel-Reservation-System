@@ -125,7 +125,7 @@ class Program
         Pause();
     }
 
-    // ================= TABLE =================
+    // ================= TABLE ===============
     static void ShowRooms(List<Room> rooms)
     {
         Console.Clear();
