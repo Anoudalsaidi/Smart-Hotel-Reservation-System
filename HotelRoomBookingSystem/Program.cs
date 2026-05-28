@@ -62,7 +62,7 @@ class Program
         }
     }
 
-    // ================= MENU =================
+    // =============== MENU =================
     static void ShowMenu()
     {
         Console.Clear();
@@ -125,7 +125,7 @@ class Program
         Pause();
     }
 
-    // ================= TABLE ===============
+    // =============== TABLE ===============
     static void ShowRooms(List<Room> rooms)
     {
         Console.Clear();
