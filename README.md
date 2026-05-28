@@ -109,8 +109,7 @@ Start Debugging (F5)
 # 📸 Screenshots
 
 Main Menu  
-(ضع صورة هنا لاحقًا)
-
+https://github.com/Anoudalsaidi/HotelReservationSystem/blob/master/Main%20Menu%20.png
 Booking Flow  
 (ضع صورة هنا لاحقًا)
 
