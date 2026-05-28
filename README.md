@@ -1,4 +1,4 @@
-# 🏨 LINQ Hotel Room Booking System
+# 🏨 Hotel Reservation System
 
 ![.NET](https://img.shields.io/badge/.NET-6.0-purple)
 ![C#](https://img.shields.io/badge/C%23-Programming-blue)
