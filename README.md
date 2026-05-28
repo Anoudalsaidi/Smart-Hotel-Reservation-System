@@ -106,16 +106,19 @@ Start Debugging (F5)
 
 ---
 
-# 📸 Screenshots
+## 📸 Screenshots
 
-Main Menu  
-https://github.com/Anoudalsaidi/HotelReservationSystem/blob/master/Main%20Menu%20.png
-Booking Flow  
-(ضع صورة هنا لاحقًا)
+### 🏨 Main Menu
+![Main Menu](https://github.com/Anoudalsaidi/HotelReservationSystem/blob/master/Main%20Menu%20.png)
 
-Dashboard  
-(ضع صورة هنا لاحقًا)
+### 🎯 Booking Flow
+![Booking Flow](https://via.placeholder.com/900x400.png?text=Room+Booking+Flow+Selection+Menu)
 
+### 📋 Available Rooms
+![Rooms](https://via.placeholder.com/900x400.png?text=Available+Rooms+List+Console+UI)
+
+### 📊 Dashboard
+![Dashboard](https://via.placeholder.com/900x400.png?text=Hotel+System+Dashboard+Statistics)
 ---
 
 # 🔮 Future Improvements
