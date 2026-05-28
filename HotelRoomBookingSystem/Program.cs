@@ -143,7 +143,7 @@ class Program
             Console.ResetColor();
         }
 
-        Console.WriteLine("====================================");
+        Console.WriteLine("==================================");
 
         Pause();
     }
