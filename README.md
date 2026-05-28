@@ -1,10 +1,12 @@
-# 🏨 Hotel Reservation System
+# 🏨 Smart Hotel Reservation System
 
 ![.NET](https://img.shields.io/badge/.NET-6.0-purple)
 ![C#](https://img.shields.io/badge/C%23-Programming-blue)
 ![Status](https://img.shields.io/badge/status-completed-brightgreen)
+![Architecture](https://img.shields.io/badge/architecture-clean--code-orange)
 
-A console-based Hotel Room Booking System built using C#, LINQ, and clean architecture principles, designed to simulate real-world hotel reservation workflows.
+🚀 A clean and scalable **Hotel Booking System** built using C#, LINQ, and clean architecture principles.  
+Designed to simulate real-world hotel reservation workflows with interactive console UI.
 
 ---
 
@@ -114,8 +116,6 @@ Start Debugging (F5)
 ### 🎯 Booking Flow
 ![Booking Flow](https://github.com/Anoudalsaidi/HotelReservationSystem/blob/master/Booking-flow.png)
 
-### 📋 Available Rooms
-![Rooms](https://via.placeholder.com/900x400.png?text=Available+Rooms+List+Console+UI)
 
 ### 📊 Dashboard
 ![Dashboard](https://github.com/Anoudalsaidi/HotelReservationSystem/blob/master/Dashboard%20.png)
