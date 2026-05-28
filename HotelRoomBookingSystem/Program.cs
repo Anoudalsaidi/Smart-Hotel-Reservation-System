@@ -62,7 +62,7 @@ class Program
         }
     }
 
-    // =========== MENU =================
+    // =========== MENU ===============
     static void ShowMenu()
     {
         Console.Clear();
