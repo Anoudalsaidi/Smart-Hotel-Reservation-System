@@ -2,9 +2,10 @@
 
 ![.NET](https://img.shields.io/badge/.NET-6.0-purple)
 ![C#](https://img.shields.io/badge/C%23-Programming-blue)
+![LINQ](https://img.shields.io/badge/LINQ-Queries-blue)
 ![Status](https://img.shields.io/badge/status-completed-brightgreen)
 ![Architecture](https://img.shields.io/badge/architecture-clean--code-orange)
-![LINQ](https://img.shields.io/badge/LINQ-Queries-blue)
+
 
 🚀 A clean and scalable **Hotel Booking System** built using C#, LINQ, and clean architecture principles.  
 Designed to simulate real-world hotel reservation workflows with interactive console UI.
