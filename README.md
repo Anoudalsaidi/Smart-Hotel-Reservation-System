@@ -141,6 +141,20 @@ Start Debugging (F5)
 - Booking history tracking  
 
 ---
+# 🏗️ Design Principles
+
+This project was built following clean and maintainable software development practices:
+
+* Separation of Concerns (SoC)
+* Service-based architecture
+* Reusable business logic
+* LINQ-driven data processing
+* Simple and scalable project structure
+* Readable and maintainable code organization
+
+The goal was to simulate a real-world hotel reservation workflow while keeping the application lightweight and easy to extend.
+
+---
 
 # 👨‍💻 Author
 
