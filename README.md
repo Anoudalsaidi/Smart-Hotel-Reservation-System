@@ -107,6 +107,15 @@ Start Debugging (F5)
 - Lightweight and fast execution  
 
 ---
+## ⚡ System Workflow
+
+1. User opens the console application
+2. Available rooms are loaded into memory
+3. LINQ queries process filtering and searching
+4. User selects and books a room
+5. Booking status updates instantly
+6. Dashboard statistics refresh automatically
+---
 
 ## 📸 Screenshots
 
